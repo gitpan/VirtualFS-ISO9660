@@ -4,4 +4,5 @@ MANIFEST
 README
 t/VirtualFS-ISO9660.t
 lib/VirtualFS/ISO9660.pm
+lib/VirtualFS/ISO9660.pod
 META.yml                                 Module meta-data (added by MakeMaker)
