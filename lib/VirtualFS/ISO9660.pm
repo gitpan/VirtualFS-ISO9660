@@ -14,7 +14,7 @@ use Symbol;	# need geniosym
 # for debugging
 #require Data::Dumper;
 
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 
 our ($SEPARATOR_1, $SEPARATOR_2, $A_CHARACTERS, $D_CHARACTERS);
 { no strict 'vars';
@@ -172,6 +172,23 @@ sub id_file {
 	}
 }
 
+# $o->extract_file()
+# 		$o->extract_file('/COPYRIGH', 'to-file');
+#	This is done using CORE::open on the to-file, which means that
+# in perl 5.8.0 you can do:
+#			$o->extract_file('/COPYRIGH', \$scalar);
+#	and the contents of the file will be extracted into $scalar.
+
+sub extract_file {
+	my $this = shift;
+	croak 'usage: extract_file(iso-filename, output-filename)' unless @_>=2;
+	my $from = shift;
+	my $to = shift;
+	$this->open(my $infh, '<', $from) or return;	# eh, right now open() will croak anyway.
+	CORE::open(my $outfh, '>', $to);
+	local $\;	# don't let $\ screw with us
+	while(read($infh, my $buf, 4096)) { print $outfh $buf; }
+}
 	
 # ============================================================
 #                    internal functions

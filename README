@@ -1,4 +1,4 @@
-VirtualFS-ISO9660 version 0.01
+VirtualFS-ISO9660 version 0.02
 ====================
 
 This module can be used to read files that are contained with in an ISO-9660 format
