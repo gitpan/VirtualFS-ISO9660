@@ -1,0 +1,7 @@
+Changes
+Makefile.PL
+MANIFEST
+README
+t/VirtualFS-ISO9660.t
+lib/VirtualFS/ISO9660.pm
+META.yml                                 Module meta-data (added by MakeMaker)
